@@ -19,11 +19,26 @@ const quizQuestions = [
   }
 ];
 
-function displayQuestion(questionIndex) {
-  const currentQuestion = quizQuestions[questionIndex];
-  // Use the currentQuestion to display on the UI as needed
-  console.log(currentQuestion.question);
-  console.log(currentQuestion.choices);
-  console.log(currentQuestion.correctAnswer);
-}
+// Function to display the current question
+function displayQuestion() {
+  const questionTitle = document.getElementById('question-title');
+  const choicesContainer = document.getElementById('choices');
 
+  // Check if there are still questions left
+  if (currentQuestionIndex < quizQuestions.length && totalTime > 0) {
+    // Display the question title
+    questionTitle.textContent = quizQuestions[currentQuestionIndex].question;
+
+    // Display the choices
+    choicesContainer.innerHTML = ''; // Clear previous choices
+    quizQuestions[currentQuestionIndex].choices.forEach((choice, index) => {
+      const button = document.createElement('button');
+      button.textContent = choice;
+      button.addEventListener('click', () => checkAnswer(index));
+      choicesContainer.appendChild(button);
+    });
+  } else {
+    // All questions have been answered or time is up, end the quiz
+    endQuiz();
+  }
+}
