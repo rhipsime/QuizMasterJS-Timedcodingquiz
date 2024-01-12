@@ -1,5 +1,4 @@
 // logic.js
-// logic.js
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -36,11 +35,7 @@ if (startButton) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  let currentQuestionIndex = 0;
   let totalTime = 60; 
-  let score = 0;
-
-  // Your existing code here...
 
   // Function to check the user's answer
   function checkAnswer(choiceIndex) {
@@ -63,50 +58,69 @@ document.addEventListener('DOMContentLoaded', function () {
     displayQuestion();
   }
 
+  // Function to display the current question
+  function displayQuestion() {
+    const questionTitle = document.getElementById('question-title');
+    const choicesContainer = document.getElementById('choices');
+
+    // Check if there are still questions left
+    if (currentQuestionIndex < quizQuestions.length && totalTime > 0) {
+      // Display the question title
+      questionTitle.textContent = quizQuestions[currentQuestionIndex].question;
+
+      // Display the choices
+      choicesContainer.innerHTML = ''; // Clear previous choices
+      quizQuestions[currentQuestionIndex].choices.forEach((choice, index) => {
+        const button = document.createElement('button');
+        button.textContent = choice;
+        button.addEventListener('click', () => checkAnswer(index));
+        choicesContainer.appendChild(button);
+      });
+    } else {
+      // All questions have been answered or time is up, end the quiz
+      endQuiz();
+    }
+  }
+
+  // Function to end the quiz
+  function endQuiz() {
+    // Clear the timer interval
+    clearInterval(timer);
+
+    // Display the final score
+    const finalScore = score;
+    alert(`Game Over! Your final score is ${finalScore}.`);
+
+    // Prompt the user to enter initials
+    const userInitials = prompt('Enter your initials:');
+
+    // Save initials and score to localStorage
+    saveHighScore(userInitials, finalScore);
+
+    // Optionally, display high scores
+    displayHighScores();
+
+    // Reset game variables for a potential restart
+    currentQuestionIndex = 0;
+    score = 0;
+
+    // Implement any additional logic based on your requirements
+  }
+
   // Your existing code here...
+
+  // Function to save initials and score to localStorage
+  function saveHighScore(initials, score) {
+    // Your existing code here...
+  }
+
+  // Your existing code here...
+
+  // Function to display high scores
+  function displayHighScores() {
+    // Your existing code here...
+  }
 
   // Now you can call displayQuestion when you want to show a new question
   displayQuestion();
 });
-
-// Your existing code here...
-
-// Function to end the quiz
-function endQuiz() {
-  // Clear the timer interval
-  clearInterval(timer);
-
-  // Display the final score
-  const finalScore = score;
-  alert(`Game Over! Your final score is ${finalScore}.`);
-
-  // Prompt the user to enter initials
-  const userInitials = prompt('Enter your initials:');
-
-  // Save initials and score to localStorage
-  saveHighScore(userInitials, finalScore);
-
-  // Optionally, display high scores
-  displayHighScores();
-
-  // Reset game variables for a potential restart
-  currentQuestionIndex = 0;
-  score = 0;
-
-  // Implement any additional logic based on your requirements
-}
-
-// Your existing code here...
-
-// Function to save initials and score to localStorage
-function saveHighScore(initials, score) {
-  // Your existing code here...
-}
-
-// Your existing code here...
-
-// Function to display high scores
-function displayHighScores() {
-  // Your existing code here...
-}
-
