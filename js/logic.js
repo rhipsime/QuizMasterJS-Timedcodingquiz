@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
       choices: ['A programming language', 'A type of coffee', 'A planet'],
       correctAnswer: 'A programming language'
     },
-    // Add more questions and choices as needed
+    // Add more questions as needed
   ];
 
   let currentQuestionIndex = 0;
