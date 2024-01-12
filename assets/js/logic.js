@@ -35,7 +35,7 @@ if (startButton) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  let totalTime = 60; 
+  let totalTime = 60;
 
   // Function to check the user's answer
   function checkAnswer(choiceIndex) {
