@@ -64,11 +64,24 @@ document.addEventListener('DOMContentLoaded', function () {
     displayQuestion();
   }
 
-  function checkAnswer(choiceIndex) {
-    // Implement logic to check the selected answer against the correct answer
-    // Update the score if necessary
+  {
+    const selectedAnswer = quizQuestions[currentQuestionIndex].choices[choiceIndex];
+    const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
+
+    // Check if the selected answer is correct
+    if (selectedAnswer === correctAnswer) {
+      // Increase the score if the answer is correct
+      score++;
+    } else {
+      // Subtract time if the answer is incorrect
+      totalTime -= 5; // Subtract 5 seconds for incorrect answers
+    }
+
     // Move to the next question
-    // Call displayQuestion to show the next question
+    currentQuestionIndex++;
+
+    // Display the next question or end the quiz
+    displayQuestion();
   }
 
   function endQuiz() {
