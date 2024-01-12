@@ -1,3 +1,8 @@
+function startQuiz() {
+  // Start the quiz logic
+  console.log("Quiz is starting!"); // Replace this line with your actual quiz logic
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const quizQuestions = [
     {
@@ -128,10 +133,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Add an event listener to the "Start Quiz" button
-  const startButton = document.getElementById('start');
-  startButton.addEventListener('click', startQuiz);
-  
   // Additional changes:
   
   // Function to handle the "Submit" button (add this at the end)
