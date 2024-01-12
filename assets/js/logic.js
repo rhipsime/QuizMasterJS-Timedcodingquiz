@@ -1,4 +1,3 @@
-// logic.js
 document.addEventListener('DOMContentLoaded', function () {
   let currentQuestionIndex = 0;
   let score = 0;
@@ -124,23 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("Quiz is starting!");
     startTimer(); // Call your function to start the timer or display the first question
     displayQuestion(); // Display the first question
-  }
-
-  // Function to start the timer
-  function startTimer() {
-    timer = setInterval(function () {
-      totalTime--;
-
-      // Update the timer display on your HTML page
-      const timerElement = document.getElementById('time');
-      timerElement.textContent = totalTime;
-
-      // Check if the time is up
-      if (totalTime <= 0) {
-        clearInterval(timer);
-        endQuiz(); // Call the function to end the quiz when time is up
-      }
-    }, 1000); // Update every 1000 milliseconds (1 second)
   }
 
   // Start the quiz when the "Start Quiz" button is clicked
