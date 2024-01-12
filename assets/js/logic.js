@@ -4,21 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
   let timer; // Variable to store the timer
   let totalTime = 60; // Set the total time for the quiz in seconds
 
-  function startTimer() {
-    timer = setInterval(function () {
-      totalTime--;
-
-      // Update the timer display on your HTML page
-      const timerElement = document.getElementById('time');
-      timerElement.textContent = totalTime;
-
-      // Check if the time is up
-      if (totalTime <= 0) {
-        clearInterval(timer);
-        endQuiz(); // Call the function to end the quiz when time is up
-      }
-    }, 1000); // Update every 1000 milliseconds (1 second)
-  }
+  // Function to handle the "Submit" button
+  document.getElementById('submit').addEventListener('click', function () {
+    endQuiz();
+  });
 
   // Function to check the user's answer
   function checkAnswer(choiceIndex) {
@@ -41,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     displayQuestion();
   }
 
+  // Function to display the current question
   function displayQuestion() {
     const questionTitle = document.getElementById('question-title');
     const choicesContainer = document.getElementById('choices');
@@ -64,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Function to end the quiz
   function endQuiz() {
     // Clear the timer interval
     clearInterval(timer);
@@ -88,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Implement any additional logic based on your requirements
   }
 
-  // Save initials and score to localStorage
+  // Function to save initials and score to localStorage
   function saveHighScore(initials, score) {
     // Retrieve existing high scores from localStorage or initialize an empty array
     const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
@@ -107,40 +98,31 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('highScores', JSON.stringify(trimmedHighScores));
   }
 
-  // Modify the displayHighScores function to update the DOM
+  // Function to display high scores
   function displayHighScores() {
     // Retrieve high scores from localStorage
     const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
     const highscoresList = document.getElementById('highscores');
 
-    // Clear previous high scores
-    highscoresList.innerHTML = '';
+    // Check if the highscoresList element exists
+    if (highscoresList) {
+      // Clear previous high scores
+      highscoresList.innerHTML = '';
 
-    // Display the high scores on the HTML page
-    highScores.forEach((entry, index) => {
-      const listItem = document.createElement('li');
-      listItem.textContent = `${index + 1}. ${entry.initials}: ${entry.score}`;
-      highscoresList.appendChild(listItem);
-    });
+      // Display the high scores on the HTML page
+      highScores.forEach((entry, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${index + 1}. ${entry.initials}: ${entry.score}`;
+        highscoresList.appendChild(listItem);
+      });
+    }
   }
 
-  // Additional changes:
-
-  // Function to handle the "Submit" button (add this at the end)
-  document.getElementById('submit').addEventListener('click', function () {
-    endQuiz();
-  });
-
-  // Update the checkAnswer function to handle the last question (add this inside the function)
-  if (currentQuestionIndex === quizQuestions.length - 1) {
-    endQuiz();
-  }
-
-  // Start the quiz when the "Start Quiz" button is clicked
+  // Function to start the quiz
   function startQuiz() {
-    // Start the quiz logic
     console.log("Quiz is starting!");
     startTimer(); // Call your function to start the timer or display the first question
+    displayQuestion(); // Display the first question
   }
 
   // Start the quiz when the "Start Quiz" button is clicked
