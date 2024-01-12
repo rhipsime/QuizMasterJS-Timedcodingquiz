@@ -1,4 +1,33 @@
-// logic.js
+// Function to start the quiz
+function startQuiz() {
+  console.log("Quiz is starting!");
+  startTimer(); // Call your function to start the timer or display the first question
+  displayQuestion(); // Display the first question
+}
+
+// Function to start the timer
+function startTimer() {
+  timer = setInterval(function () {
+    totalTime--;
+
+    // Update the timer display on your HTML page
+    const timerElement = document.getElementById('time');
+    timerElement.textContent = totalTime;
+
+    // Check if the time is up
+    if (totalTime <= 0) {
+      clearInterval(timer);
+      endQuiz(); // Call the function to end the quiz when time is up
+    }
+  }, 1000); // Update every 1000 milliseconds (1 second)
+}
+
+// Start the quiz when the "Start Quiz" button is clicked
+const startButton = document.getElementById('start');
+if (startButton) {
+  startButton.addEventListener('click', startQuiz);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   let currentQuestionIndex = 0;
   let score = 0;
@@ -98,54 +127,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // Save the updated high scores to localStorage
     localStorage.setItem('highScores', JSON.stringify(trimmedHighScores));
   }
-
-  // Function to display high scores
-  function displayHighScores() {
-    // Retrieve high scores from localStorage
-    const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-    const highscoresList = document.getElementById('highscores');
-
-    // Check if the highscoresList element exists
-    if (highscoresList) {
-      // Clear previous high scores
-      highscoresList.innerHTML = '';
-
-      // Display the high scores on the HTML page
-      highScores.forEach((entry, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${index + 1}. ${entry.initials}: ${entry.score}`;
-        highscoresList.appendChild(listItem);
-      });
-    }
-  }
-
-  // Function to start the quiz
-  function startQuiz() {
-    console.log("Quiz is starting!");
-    startTimer(); // Call your function to start the timer or display the first question
-    displayQuestion(); // Display the first question
-  }
-
-  // Function to start the timer
-  function startTimer() {
-    timer = setInterval(function () {
-      totalTime--;
-
-      // Update the timer display on your HTML page
-      const timerElement = document.getElementById('time');
-      timerElement.textContent = totalTime;
-
-      // Check if the time is up
-      if (totalTime <= 0) {
-        clearInterval(timer);
-        endQuiz(); // Call the function to end the quiz when time is up
-      }
-    }, 1000); // Update every 1000 milliseconds (1 second)
-  }
-
-  // Start the quiz when the "Start Quiz" button is clicked
-  const startButton = document.getElementById('start');
-  if (startButton) {
-    startButton.addEventListener('click', startQuiz);
-  }
 });
+
+// Function to display high scores
+function displayHighScores() {
+  // Retrieve high scores from localStorage
+  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const highscoresList = document.getElementById('highscores');
+
+  // Check if the highscoresList element exists
+  if (highscoresList) {
+    // Clear previous high scores
+    highscoresList.innerHTML = '';
+
+    // Display the high scores on the HTML page
+    highScores.forEach((entry, index) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${index + 1}. ${entry.initials}: ${entry.score}`;
+      highscoresList.appendChild(listItem);
+    });
+  }
+}
