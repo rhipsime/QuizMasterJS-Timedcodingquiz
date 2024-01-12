@@ -61,29 +61,33 @@ document.addEventListener('DOMContentLoaded', function () {
     displayQuestion();
   }
 
-  // Function to display the current question
-  function displayQuestion() {
-    const questionTitle = document.getElementById('question-title');
-    const choicesContainer = document.getElementById('choices');
-
-    // Check if there are still questions left
-    if (currentQuestionIndex < quizQuestions.length && totalTime > 0) {
-      // Display the question title
-      questionTitle.textContent = quizQuestions[currentQuestionIndex].question;
-
-      // Display the choices
-      choicesContainer.innerHTML = ''; // Clear previous choices
-      quizQuestions[currentQuestionIndex].choices.forEach((choice, index) => {
-        const button = document.createElement('button');
-        button.textContent = choice;
-        button.addEventListener('click', () => checkAnswer(index));
-        choicesContainer.appendChild(button);
-      });
-    } else {
-      // All questions have been answered or time is up, end the quiz
-      endQuiz();
+    // Function to display the current question
+    function displayQuestion() {
+      const questionTitle = document.getElementById('question-title');
+      const choicesContainer = document.getElementById('choices');
+  
+      // Check if there are still questions left
+      if (currentQuestionIndex < quizQuestions.length && totalTime > 0) {
+        // Display the question title
+        questionTitle.textContent = quizQuestions[currentQuestionIndex].question;
+  
+        // Display the choices
+        choicesContainer.innerHTML = ''; // Clear previous choices
+        quizQuestions[currentQuestionIndex].choices.forEach((choice, index) => {
+          const button = document.createElement('button');
+          button.textContent = choice;
+          button.addEventListener('click', () => checkAnswer(index));
+          choicesContainer.appendChild(button);
+        });
+      } else {
+        // All questions have been answered or time is up, end the quiz
+        endQuiz();
+      }
     }
-  }
+  
+    // Now you can call displayQuestion when you want to show a new question
+    displayQuestion();
+  });
 
   // Function to end the quiz
   function endQuiz() {
@@ -128,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Save the updated high scores to localStorage
     localStorage.setItem('highScores', JSON.stringify(trimmedHighScores));
   }
-});
+;
 
 // Function to display high scores
 function displayHighScores() {

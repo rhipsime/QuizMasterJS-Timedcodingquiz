@@ -16,3 +16,12 @@ const quizQuestions = [
     correctAnswer: 'A styling language'
   }
 ];
+
+function displayQuestion(questionIndex) {
+  const currentQuestion = quizQuestions[questionIndex];
+  // Use the currentQuestion to display on the UI as needed
+  console.log(currentQuestion.question);
+  console.log(currentQuestion.choices);
+  console.log(currentQuestion.correctAnswer);
+}
+
