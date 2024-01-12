@@ -20,7 +20,7 @@ const quizQuestions = [
 ];
 
 // Function to display the current question
-function displayQuestion() {
+function displayQuestion(currentQuestionIndex) {
   const questionTitle = document.getElementById('question-title');
   const choicesContainer = document.getElementById('choices');
 

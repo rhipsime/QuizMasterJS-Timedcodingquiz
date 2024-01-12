@@ -3,7 +3,7 @@
 function startQuiz() {
   console.log("Quiz is starting!");
   startTimer(); // Call your function to start the timer
-  displayQuestion(); // Display the first question
+  displayQuestion(currentQuestionIndex); // Display the first question
 }
 
 // Function to start the timer
