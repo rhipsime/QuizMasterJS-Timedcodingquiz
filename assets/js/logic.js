@@ -1,13 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const quizQuestions = [
-      {
-        question: 'What is JavaScript?',
-        choices: ['A programming language', 'A type of coffee', 'A planet'],
-        correctAnswer: 'A programming language'
-      },
-      // Add more questions as needed
-    ];
-  
+   
     let currentQuestionIndex = 0;
     let score = 0;
     let timer; // Variable to store the timer
@@ -40,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         score++;
       } else {
         // Subtract time if the answer is incorrect
-        totalTime -= 5; // Subtract 5 seconds for incorrect answers
+        totalTime -= 10; // Subtract 10 seconds for incorrect answers
       }
   
       // Move to the next question
