@@ -1,4 +1,7 @@
 // logic.js
+
+let currentQuestionIndex = 0;
+
 // Function to start the quiz
 function startQuiz() {
   console.log("Quiz is starting!");
