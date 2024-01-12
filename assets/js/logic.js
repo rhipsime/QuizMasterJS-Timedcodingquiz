@@ -1,4 +1,5 @@
 // logic.js
+// logic.js
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -35,55 +36,40 @@ if (startButton) {
   startButton.addEventListener('click', startQuiz);
 }
 
-// Function to handle the "Submit" button
-document.getElementById('submit').addEventListener('click', function () {
-  endQuiz();
+document.addEventListener('DOMContentLoaded', function () {
+  let currentQuestionIndex = 0;
+  let score = 0;
+
+  // Your existing code here...
+
+  // Function to check the user's answer
+  function checkAnswer(choiceIndex) {
+    const selectedAnswer = quizQuestions[currentQuestionIndex].choices[choiceIndex];
+    const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
+
+    // Check if the selected answer is correct
+    if (selectedAnswer === correctAnswer) {
+      // Increase the score if the answer is correct
+      score++;
+    } else {
+      // Subtract time if the answer is incorrect
+      totalTime -= 10; // Subtract 10 seconds for incorrect answers
+    }
+
+    // Move to the next question
+    currentQuestionIndex++;
+
+    // Display the next question or end the quiz
+    displayQuestion();
+  }
+
+  // Your existing code here...
+
+  // Now you can call displayQuestion when you want to show a new question
+  displayQuestion();
 });
 
-// Function to check the user's answer
-function checkAnswer(choiceIndex) {
-  const selectedAnswer = quizQuestions[currentQuestionIndex].choices[choiceIndex];
-  const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
-
-  // Check if the selected answer is correct
-  if (selectedAnswer === correctAnswer) {
-    // Increase the score if the answer is correct
-    score++;
-  } else {
-    // Subtract time if the answer is incorrect
-    totalTime -= 10; // Subtract 10 seconds for incorrect answers
-  }
-
-  // Move to the next question
-  currentQuestionIndex++;
-
-  // Display the next question or end the quiz
-  displayQuestion();
-}
-
-// Function to display the current question
-function displayQuestion() {
-  const questionTitle = document.getElementById('question-title');
-  const choicesContainer = document.getElementById('choices');
-
-  // Check if there are still questions left
-  if (currentQuestionIndex < quizQuestions.length && totalTime > 0) {
-    // Display the question title
-    questionTitle.textContent = quizQuestions[currentQuestionIndex].question;
-
-    // Display the choices
-    choicesContainer.innerHTML = ''; // Clear previous choices
-    quizQuestions[currentQuestionIndex].choices.forEach((choice, index) => {
-      const button = document.createElement('button');
-      button.textContent = choice;
-      button.addEventListener('click', () => checkAnswer(index));
-      choicesContainer.appendChild(button);
-    });
-  } else {
-    // All questions have been answered or time is up, end the quiz
-    endQuiz();
-  }
-}
+// Your existing code here...
 
 // Function to end the quiz
 function endQuiz() {
@@ -110,41 +96,17 @@ function endQuiz() {
   // Implement any additional logic based on your requirements
 }
 
+// Your existing code here...
+
 // Function to save initials and score to localStorage
 function saveHighScore(initials, score) {
-  // Retrieve existing high scores from localStorage or initialize an empty array
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-
-  // Add the new high score
-  highScores.push({ initials, score });
-
-  // Sort the high scores in descending order
-  highScores.sort((a, b) => b.score - a.score);
-
-  // Limit the number of stored high scores (adjust as needed)
-  const maxHighScores = 10;
-  const trimmedHighScores = highScores.slice(0, maxHighScores);
-
-  // Save the updated high scores to localStorage
-  localStorage.setItem('highScores', JSON.stringify(trimmedHighScores));
+  // Your existing code here...
 }
+
+// Your existing code here...
 
 // Function to display high scores
 function displayHighScores() {
-  // Retrieve high scores from localStorage
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  const highscoresList = document.getElementById('highscores');
-
-  // Check if the highscoresList element exists
-  if (highscoresList) {
-    // Clear previous high scores
-    highscoresList.innerHTML = '';
-
-    // Display the high scores on the HTML page
-    highScores.forEach((entry, index) => {
-      const listItem = document.createElement('li');
-      listItem.textContent = `${index + 1}. ${entry.initials}: ${entry.score}`;
-      highscoresList.appendChild(listItem);
-    });
-  }
+  // Your existing code here...
 }
+
