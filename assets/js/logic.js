@@ -4,7 +4,6 @@
 let currentQuestionIndex = 0;
 let score = 0;
 let timer; // Variable to store the timer
-let totalTime = 60; // Set the total time for the quiz in seconds
 
 // Function to start the quiz
 function startQuiz() {
@@ -38,6 +37,7 @@ if (startButton) {
 
 document.addEventListener('DOMContentLoaded', function () {
   let currentQuestionIndex = 0;
+  let totalTime = 60; 
   let score = 0;
 
   // Your existing code here...
