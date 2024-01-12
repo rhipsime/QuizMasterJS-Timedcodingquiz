@@ -131,20 +131,16 @@ document.addEventListener('DOMContentLoaded', function () {
     endQuiz();
   });
 
-  // Update the checkAnswer function to handle the last question (add this inside the function)
-  if (currentQuestionIndex === quizQuestions.length - 1) {
-    endQuiz();
+  // Move the startQuiz function outside the event listener
+  function startQuiz() {
+    // Start the quiz logic
+    console.log("Quiz is starting!");
+    startTimer(); // Call your function to start the timer or display the first question
   }
 
   // Start the quiz when the "Start Quiz" button is clicked
-  document.getElementById('start-quiz').addEventListener('click', function () {
-    startQuiz();
-  });
+  const startButton = document.getElementById('start');
+  if (startButton) {
+    startButton.addEventListener('click', startQuiz);
+  }
 });
-
-// Move the startQuiz function outside the event listener
-function startQuiz() {
-  // Start the quiz logic
-  console.log("Quiz is starting!");
-  startTimer(); // Call your function to start the timer or display the first question
-}
