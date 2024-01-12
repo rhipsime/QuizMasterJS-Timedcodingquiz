@@ -131,7 +131,12 @@ document.addEventListener('DOMContentLoaded', function () {
     endQuiz();
   });
 
-  // Move the startQuiz function outside the event listener
+  // Update the checkAnswer function to handle the last question (add this inside the function)
+  if (currentQuestionIndex === quizQuestions.length - 1) {
+    endQuiz();
+  }
+
+  // Start the quiz when the "Start Quiz" button is clicked
   function startQuiz() {
     // Start the quiz logic
     console.log("Quiz is starting!");
