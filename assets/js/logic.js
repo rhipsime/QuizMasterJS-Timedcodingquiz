@@ -3,12 +3,13 @@
 let currentQuestionIndex = 0;
 let score = 0;
 let timer; // Variable to store the timer
+let totalTime = 60; // Set the total time for the quiz in seconds
 
 // Function to start the quiz
 function startQuiz() {
   console.log("Quiz is starting!");
   startTimer(); // Call your function to start the timer
-  displayQuestion(); // Display the first question
+  displayQuestion(currentQuestionIndex); // Display the first question
 }
 
 // Function to start the timer
@@ -35,8 +36,6 @@ if (startButton) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  let totalTime = 60;
-
   // Function to check the user's answer
   function checkAnswer(choiceIndex) {
     const selectedAnswer = quizQuestions[currentQuestionIndex].choices[choiceIndex];
@@ -103,11 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Reset game variables for a potential restart
     currentQuestionIndex = 0;
     score = 0;
+    totalTime = 60; // Reset total time
 
-    // Implement any additional logic based on your requirements
   }
-
-  // Your existing code here...
 
   // Function to save initials and score to localStorage
   function saveHighScore(initials, score) {
