@@ -10,5 +10,9 @@ const quizQuestions = [
     choices: ['A programming language', 'A markup language', 'A type of coffee'],
     correctAnswer: 'A markup language'
   },
-  // Add more questions as needed
+  {
+    question: 'What is CSS?',
+    choices: ['A programming language', 'A styling language', 'A type of coffee'],
+    correctAnswer: 'A styling language'
+  }
 ];
