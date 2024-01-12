@@ -12,6 +12,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let currentQuestionIndex = 0;
   let score = 0;
+  let timer; // Variable to store the timer
+  let totalTime = 60; // Set the total time for the quiz in seconds
+
+  function startTimer() {
+    timer = setInterval(function () {
+      totalTime--;
+
+      // Update the timer display on your HTML page
+      const timerElement = document.getElementById('time');
+      timerElement.textContent = totalTime;
+
+      // Check if the time is up
+      if (totalTime <= 0) {
+        clearInterval(timer);
+        endQuiz(); // Call the function to end the quiz when time is up
+      }
+    }, 1000); // Update every 1000 milliseconds (1 second)
+  }
+
   // Add more variables as needed
 
   function displayQuestion() {
@@ -38,6 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function startQuiz() {
+    // Start the timer when the quiz begins
+    startTimer();
+  
     // Other initialization code if needed
     displayQuestion();
   }
