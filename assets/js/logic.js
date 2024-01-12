@@ -1,3 +1,4 @@
+// logic.js
 document.addEventListener('DOMContentLoaded', function () {
   let currentQuestionIndex = 0;
   let score = 0;

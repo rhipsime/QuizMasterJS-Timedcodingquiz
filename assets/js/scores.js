@@ -8,15 +8,18 @@ document.addEventListener('DOMContentLoaded', function () {
   function displayHighscores() {
     const highscoresList = document.getElementById('highscores');
     
-    // Clear previous high scores
-    highscoresList.innerHTML = '';
+    // Check if the highscoresList element exists
+    if (highscoresList) {
+      // Clear previous high scores
+      highscoresList.innerHTML = '';
 
-    // Iterate through high scores and create list items
-    highScores.forEach((entry, index) => {
-      const listItem = document.createElement('li');
-      listItem.textContent = `${index + 1}. ${entry.initials}: ${entry.score}`;
-      highscoresList.appendChild(listItem);
-    });
+      // Iterate through high scores and create list items
+      highScores.forEach((entry, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${index + 1}. ${entry.initials}: ${entry.score}`;
+        highscoresList.appendChild(listItem);
+      });
+    }
   }
 
   // Clear high scores from localStorage
@@ -30,5 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Add event listener to the "Clear Highscores" button
   const clearButton = document.getElementById('clear');
-  clearButton.addEventListener('click', clearHighscores);
+  if (clearButton) {
+    clearButton.addEventListener('click', clearHighscores);
+  }
 });
