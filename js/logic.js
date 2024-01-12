@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const choicesContainer = document.getElementById('choices');
 
     // Check if there are still questions left
-    if (currentQuestionIndex < quizQuestions.length) {
+    if (currentQuestionIndex < quizQuestions.length && totalTime > 0) {
       // Display the question title
       questionTitle.textContent = quizQuestions[currentQuestionIndex].question;
 
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         choicesContainer.appendChild(button);
       });
     } else {
-      // All questions have been answered, end the quiz or show a summary
+      // All questions have been answered or time is up, end the quiz
       endQuiz();
     }
   }
@@ -85,8 +85,24 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function endQuiz() {
-    // Implement logic to end the quiz, show the final score, and handle user input
+    // Clear the timer interval
+    clearInterval(timer);
+
+    // Display the final score
+    const finalScore = score;
+    alert(`Game Over! Your final score is ${finalScore}.`);
+
+    // Optionally, prompt the user to enter initials or handle further actions
+    const userInitials = prompt('Enter your initials:');
+    // You can do something with the user's initials, such as saving them to high scores
+
+    // Reset game variables for a potential restart
+    currentQuestionIndex = 0;
+    score = 0;
+
+    // Implement any additional logic based on your requirements
   }
+
 
   // Add an event listener to the "Start Quiz" button
   const startButton = document.getElementById('start');
