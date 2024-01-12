@@ -1,7 +1,8 @@
+// logic.js
 // Function to start the quiz
 function startQuiz() {
   console.log("Quiz is starting!");
-  startTimer(); // Call your function to start the timer or display the first question
+  startTimer(); // Call your function to start the timer
   displayQuestion(); // Display the first question
 }
 
