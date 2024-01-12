@@ -1,4 +1,6 @@
 // questions.js
+let totalTime = 60; // Set the total time for the quiz in seconds
+
 const quizQuestions = [
   {
     question: 'What is JavaScript?',
