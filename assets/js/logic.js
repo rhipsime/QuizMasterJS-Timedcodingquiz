@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Function to start the quiz
   function startQuiz() {
     console.log("Quiz is starting!");
-    startTimer(); // Call your function to start the timer or display the first question
-    displayQuestion(); // Display the first question
+    startTimer(); 
+    displayQuestion(); 
   }
 
   // Start the quiz when the "Start Quiz" button is clicked
