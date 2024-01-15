@@ -36,8 +36,9 @@ function saveScore() {
   
       console.log('Redirecting to highscores page'); // Debugging line
   
-      // Redirect to highscores page
-      window.location.href = 'highscores.html';
+     // Redirect to highscores page
+    location.href = 'highscores.html';
+
     }
   }
   
