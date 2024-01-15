@@ -62,12 +62,12 @@ function checkAnswer(choiceIndex) {
       displayFeedback('Incorrect!');
     }
   
-    // Check if the quiz has ended
+    // Check if it's the last question
     if (currentQuestionIndex === questions.length) {
       endQuiz();
     }
   }
-
+  
 // Function to display feedback
 function displayFeedback(message) {
   var feedbackElement = document.getElementById('feedback');
