@@ -4,10 +4,27 @@ function saveScore() {
   
     // Ensure initials are not empty
     if (initials.trim() !== '') {
-      // Save score to localStorage or your preferred storage mechanism
-      // Example: localStorage.setItem('highscore', timeLeft);
+      // Create an object to represent the highscore entry
+      var highscoreEntry = {
+        initials: initials,
+        score: timeLeft,
+      };
   
-      // Redirect to highscores page or display highscores
+      // Retrieve existing highscores from localStorage or initialize an empty array
+      var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
+  
+      // Add the new highscore entry
+      highscores.push(highscoreEntry);
+  
+      // Sort highscores in descending order based on score
+      highscores.sort(function (a, b) {
+        return b.score - a.score;
+      });
+  
+      // Save highscores back to localStorage
+      localStorage.setItem('highscores', JSON.stringify(highscores));
+  
+      // Redirect to highscores page
       window.location.href = 'highscores.html';
     }
   }
