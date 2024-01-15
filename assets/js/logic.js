@@ -48,19 +48,25 @@ function displayQuestion() {
 
 // Function to check the selected answer
 function checkAnswer(choiceIndex) {
-  var question = questions[currentQuestionIndex];
-
-  // Check if the selected answer is correct
-  if (choiceIndex === question.correctIndex) {
-    // Correct answer, proceed to the next question
-    currentQuestionIndex++;
-    displayQuestion();
-  } else {
-    // Incorrect answer, deduct time and provide feedback
-    timeLeft -= 10; // Deduct 10 seconds for incorrect answers
-    displayFeedback('Incorrect!');
+    var question = questions[currentQuestionIndex];
+  
+    // Check if the selected answer is correct
+    if (choiceIndex === question.correctIndex) {
+      // Correct answer, proceed to the next question
+      currentQuestionIndex++;
+      displayQuestion();
+    } else {
+      // Incorrect answer, deduct time and provide feedback
+      timeLeft -= 10; // Deduct 10 seconds for incorrect answers
+      document.getElementById('time').textContent = timeLeft; // Update timer display
+      displayFeedback('Incorrect!');
+    }
+  
+    // Check if the quiz has ended
+    if (currentQuestionIndex === questions.length) {
+      endQuiz();
+    }
   }
-}
 
 // Function to display feedback
 function displayFeedback(message) {
