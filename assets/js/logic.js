@@ -29,23 +29,29 @@ function startQuiz() {
 
 // Function to display questions
 function displayQuestion() {
-  var question = questions[currentQuestionIndex];
-  document.getElementById('question-title').textContent = question.question;
-
-  var choicesContainer = document.getElementById('choices');
-  choicesContainer.innerHTML = ''; // Clear previous choices
-
-  // Create buttons for each choice
-  question.choices.forEach(function (choice, index) {
-    var button = document.createElement('button');
-    button.textContent = choice;
-    button.addEventListener('click', function () {
-      checkAnswer(index);
+    // Check if it's the last question
+    if (currentQuestionIndex === questions.length) {
+      endQuiz();
+      return; // Exit the function to prevent further execution
+    }
+  
+    var question = questions[currentQuestionIndex];
+    document.getElementById('question-title').textContent = question.question;
+  
+    var choicesContainer = document.getElementById('choices');
+    choicesContainer.innerHTML = ''; // Clear previous choices
+  
+    // Create buttons for each choice
+    question.choices.forEach(function (choice, index) {
+      var button = document.createElement('button');
+      button.textContent = choice;
+      button.addEventListener('click', function () {
+        checkAnswer(index);
+      });
+      choicesContainer.appendChild(button);
     });
-    choicesContainer.appendChild(button);
-  });
-}
-
+  }
+  
 // Function to check the selected answer
 function checkAnswer(choiceIndex) {
     var question = questions[currentQuestionIndex];
