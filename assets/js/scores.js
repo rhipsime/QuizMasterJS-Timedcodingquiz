@@ -1,10 +1,11 @@
 // Function to save the score and initials
-function saveScore() {
+function saveScore(event) {
+    event.preventDefault(); // Prevent form submission
+  
     console.log('Save Score function called'); // Debugging line
   
     var initials = document.getElementById('initials').value;
   
-    // Ensure initials are not empty
     if (initials.trim() !== '') {
       console.log('Initials are not empty'); // Debugging line
   
@@ -35,11 +36,10 @@ function saveScore() {
       localStorage.setItem('highscores', JSON.stringify(highscores));
   
       console.log('Redirecting to highscores page'); // Debugging line
-  
-      // Redirect to highscores page
       window.location.href = 'highscores.html';
     }
   }
+  
   
   // Call saveScore when the submit button is clicked
   document.getElementById('submit').addEventListener('click', saveScore);
