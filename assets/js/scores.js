@@ -40,6 +40,24 @@ function saveScore(event) {
     }
   }
   
+  document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve highscores from localStorage
+    var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
+  
+    // Display highscores on the page
+    var highscoresList = document.getElementById('highscores');
+  
+    // Clear existing content in case this function is called multiple times
+    highscoresList.innerHTML = '';
+  
+    // Loop through highscores and append them to the list
+    for (var i = 0; i < highscores.length; i++) {
+      var scoreEntry = highscores[i];
+      var listItem = document.createElement('li');
+      listItem.textContent = scoreEntry.initials + ': ' + scoreEntry.score;
+      highscoresList.appendChild(listItem);
+    }
+  });
   
   // Call saveScore when the submit button is clicked
   document.getElementById('submit').addEventListener('click', saveScore);
