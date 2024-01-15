@@ -88,21 +88,11 @@ function displayFeedback(message) {
 
 // Function to end the quiz
 function endQuiz() {
-    clearInterval(timer);
-  
+  clearInterval(timer);
 
   // Hide questions and show end screen
   document.getElementById('questions').classList.add('hide');
   document.getElementById('end-screen').classList.remove('hide');
-
-  // Save high score to local storage
-  var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  var initials = document.getElementById('initials').value;
-  var finalScore = timeLeft;
-  
-  highScores.push({ initials: initials, score: finalScore });
-  localStorage.setItem('highScores', JSON.stringify(highScores));
-}
 
   // Display the final score
   document.getElementById('final-score').textContent = timeLeft;
