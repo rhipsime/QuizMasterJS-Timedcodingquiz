@@ -14,6 +14,8 @@ function saveScore() {
         score: timeLeft,
       };
   
+      console.log('Highscore Entry:', highscoreEntry); // Debugging line
+  
       // Retrieve existing highscores from localStorage or initialize an empty array
       var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
       
@@ -32,10 +34,13 @@ function saveScore() {
       // Save highscores back to localStorage
       localStorage.setItem('highscores', JSON.stringify(highscores));
   
+      console.log('Redirecting to highscores page'); // Debugging line
+  
       // Redirect to highscores page
       window.location.href = 'highscores.html';
     }
   }
+  
   
   
   // Call saveScore when the submit button is clicked
