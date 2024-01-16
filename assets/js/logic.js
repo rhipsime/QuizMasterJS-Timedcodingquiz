@@ -1,3 +1,7 @@
+// Add these two lines at the top of your logic.js file
+var correctSound = new Audio('./assets/sfx/correct.wav');
+var incorrectSound = new Audio('./assets/sfx/incorrect.wav');
+
 // Variables
 var timer;
 var timeLeft;
@@ -54,25 +58,27 @@ function displayQuestion() {
   
 // Function to check the selected answer
 function checkAnswer(choiceIndex) {
-    var question = questions[currentQuestionIndex];
-  
-    // Check if the selected answer is correct
-    if (choiceIndex === question.correctIndex) {
-      // Correct answer, proceed to the next question
+  var question = questions[currentQuestionIndex];
+
+  // Check if the selected answer is correct
+  if (choiceIndex === question.correctIndex) {
+      // Correct answer, play correct sound and proceed to the next question
+      correctSound.play();
       currentQuestionIndex++;
       displayQuestion();
-    } else {
-      // Incorrect answer, deduct time and provide feedback
+  } else {
+      // Incorrect answer, play incorrect sound, deduct time, and provide feedback
+      incorrectSound.play();
       timeLeft -= 10; // Deduct 10 seconds for incorrect answers
       document.getElementById('time').textContent = timeLeft; // Update timer display
       displayFeedback('Incorrect!');
-    }
-  
-    // Check if it's the last question
-    if (currentQuestionIndex === questions.length) {
-      endQuiz();
-    }
   }
+
+  // Check if it's the last question
+  if (currentQuestionIndex === questions.length) {
+      endQuiz();
+  }
+}
   
 // Function to display feedback
 function displayFeedback(message) {
