@@ -10,6 +10,11 @@ var questions = [
       choices: ['To define the structure of a web page', 'To style the HTML elements', 'To add interactivity'],
       correctIndex: 1,
     },
-    // Add more questions as needed
+    {
+      question: 'What does the "DOM" stand for in web development?',
+      choices: ['Document Object Model', 'Data Object Model', 'Design Object Model'],
+      correctIndex: 0,
+    },
+  
   ];
   
