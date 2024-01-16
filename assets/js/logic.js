@@ -102,6 +102,24 @@ function endQuiz() {
 
   // Display the final score
   document.getElementById('final-score').textContent = timeLeft;
+
+  // Get existing high scores from local storage or initialize an empty array
+  var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+  // Prompt the user for their initials
+  var initials = prompt("Enter your initials:");
+
+  // Create a new score object
+  var newScore = {
+    initials: initials,
+    score: timeLeft
+  };
+
+  // Add the new score to the high scores array
+  highScores.push(newScore);
+
+  // Save the updated high scores back to local storage
+  localStorage.setItem('highScores', JSON.stringify(highScores));
 }
 
 // Call startQuiz when the start button is clicked
