@@ -26,7 +26,7 @@ The Coding Quiz Challenge is a web-based quiz game designed to assess your under
 ![Quiz Question](./assets/screenshots/quizquestion2.png)
 *Figure 2: Quiz Question*
 
-![Feedback](./assets/screenshots/feedback.png)
+![Feedback](./assets/screenshots/Feedback.png)
 *Figure 3: Feedback*
 
 ![End Screen](./assets/screenshots/endscreen.png)
